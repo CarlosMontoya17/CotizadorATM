@@ -172,9 +172,13 @@ def sendChrome():
     minValueCh = rangeOneMin.get()
     maxValueCh = rangeOneMax.get()
     entity = verifyData()
+    
     if (minValueCh != "") and (maxValueCh != ""):
         nameFileOne = 'rangeOne.txt'
         textRange1 = 'SELECT "num_seg_so", "curp", "id", "nom_aseg" FROM "'+str(entity)+'" WHERE "id" >=  '+str(minValueCh)+' AND "id" <= '+str(maxValueCh)+' AND "aplica" IS NULL'
+        fPriory = open("com/readyPriority.pbtxt", 'w')
+        fPriory.writelines("FALSE")
+        fPriory.close()
         file = open(nameFileOne,'w')
         file.write(textRange1)
         file.close()
@@ -184,6 +188,7 @@ def sendChrome():
         cFile = open("com/currentTimes.pbtxt",'w')
         cFile.write("0")
         cFile.close()
+        
     else:
         RangeMax = Label(text= "Revisa los campos vacios Chrome", font=("Arial",10), bg="#213141", fg="red")
         RangeMax.place(x=105, y=280)
@@ -196,6 +201,9 @@ def sendOpera():
     if (minValueOp != "") and (maxValueOp != ""):
         nameFileTwo = 'rangeTwo.txt'
         textRange2 = 'SELECT "num_seg_so", "curp", "id", "nom_aseg" FROM "'+str(entity)+'" WHERE "id" >=  '+str(minValueOp)+' AND "id" <= '+str(maxValueOp)+' AND "aplica" IS NULL'
+        fPriory = open("com/readyPriority.pbtxt", 'w')
+        fPriory.writelines("FALSE")
+        fPriory.close()
         file = open(nameFileTwo,'w')
         file.write(textRange2)
         file.close()
@@ -217,6 +225,9 @@ def sendEdge():
     if (minValueEd != "") and (maxValueEd != ""):
         nameFileThree = 'rangeThree.txt'
         textRange3 = 'SELECT "num_seg_so", "curp", "id", "nom_aseg" FROM "'+str(entity)+'" WHERE "id" >=  '+str(minValueEd)+' AND "id" <= '+str(maxValueEd)+' AND "aplica" IS NULL'
+        fPriory = open("com/readyPriority.pbtxt", 'w')
+        fPriory.writelines("FALSE")
+        fPriory.close()
         file = open(nameFileThree,'w')
         file.write(textRange3)
         file.close()
@@ -239,6 +250,9 @@ def sendVivaldi():
     if (minValueVi != "") and (maxValueVi != ""):
         nameFileFour = 'rangeFour.txt'
         textRange4 = 'SELECT "num_seg_so", "curp", "id", "nom_aseg" FROM "'+str(entity)+'" WHERE "id" >=  '+str(minValueVi)+' AND "id" <= '+str(maxValueVi)+' AND "aplica" IS NULL'
+        fPriory = open("com/readyPriority.pbtxt", 'w')
+        fPriory.writelines("FALSE")
+        fPriory.close()
         file = open(nameFileFour,'w')
         file.write(textRange4)
         file.close()

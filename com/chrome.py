@@ -16,6 +16,10 @@ sys.setrecursionlimit(18000)
 nameFile = '../rangeOne.txt'
 file = open(nameFile,'r')
 instruction = file.read()
+takePrioryRead = open("readyPriority.pbtxt", 'r')
+statusPropry = takePrioryRead.readlines()
+statusPropry = statusPropry[0]
+
 cachePath = '../cache/cacheChrome.pbtxt'
 prioryPath = 'dataPriority/priorychrome.csv'
 preferences = '../preferences.pbtxt'
@@ -64,7 +68,7 @@ def cache(index):
     
 def verifyPriory():
     global scores, entity
-    if str(connect[0]) == "SERVER" or str(connect[0]) == "CLIENT":
+    if str(connect[0]) == "SERVER" or str(connect[0]) == "CLIENT" and str(statusPropry) == "FALSE":
         try:
             connection = psycopg2.connect(user="root", password="Admin$2021$A", host="144.126.136.14", port="5432", database="test")
             cursor = connection.cursor()
@@ -86,7 +90,6 @@ def savePriority():
     
 def init():
     global index, record, Minimize, All, current, scores
-    
     while True:
         time.sleep(1)    
         verifyPriory()
@@ -94,6 +97,13 @@ def init():
             if scores != [] and scores != None:
                 savePriority()
                 print("Priory connect mode: "+ connect[0])
+                takePriory = open("readyPriority.pbtxt", 'w')
+                takePriory.writelines("TRUE")
+                takePriory.close()
+                if str(connect[0]) == "SERVER":
+                    os.startfile("wServer.cmd")
+                elif str(connect[0]) == "CLIENT":
+                    os.startfile("wClient.cmd")
                 break
             elif index <= len(record)-1:
                 if str(record[index][1]) != '000000000000000000' and str(record[index][1]) != '0':
@@ -119,6 +129,13 @@ def init():
                         if scores != [] and scores != None:
                             savePriority()
                             print("Priory connect mode: "+ connect[0])
+                            takePriory = open("readyPriority.pbtxt", 'w')
+                            takePriory.writelines("TRUE")
+                            takePriory.close()
+                            if str(connect[0]) == "SERVER":
+                                os.startfile("wServer.cmd")
+                            elif str(connect[0]) == "CLIENT":
+                                os.startfile("wClient.cmd")
                             break
                         else:
                             print(index)
@@ -129,7 +146,13 @@ def init():
                     if scores != [] and scores != None:
                         savePriority()
                         print("Priory connect mode: "+ connect[0])
-                        
+                        takePriory = open("readyPriority.pbtxt", 'w')
+                        takePriory.writelines("TRUE")
+                        takePriory.close()
+                        if str(connect[0]) == "SERVER":
+                            os.startfile("wServer.cmd")
+                        elif str(connect[0]) == "CLIENT":
+                            os.startfile("wClient.cmd")
                         break
                     else:
                         print(index+1)

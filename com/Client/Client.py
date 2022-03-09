@@ -6,26 +6,30 @@ Created on Fri Mar  4 08:20:30 2022
 """
 
 import socket
-import threading
+import re
 
 currentHostName = socket.gethostname()
 currentIP = socket.gethostbyname(currentHostName)
 
-fPref = open("",'r')
+fPref = open("../../preferences.pbtxt",'r')
+lstLines = fPref.readlines()
+dataImport = re.findall('[A-Z+0-9+,+.]+', lstLines[2])
+dataImport = ''.join(str(dataImport[0])).split(",")
+ip = dataImport[1]
 
-
-
-host = "192.168.100.60"
+host = ip
 port = 64307
 
 dataset = []
 registers = open('registers.txt', 'w')
 
+
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((host,port))
 
-print(f"Current PC: "+currentHostName +'\nIP:'+currentIP)
-print(f"\nClient Listen...\n")
+
+print("Current PC: "+currentHostName +'\nIP:'+currentIP)
+print("\nClient Listen...\n")
 
 while True:
     recv = client.recv(1024).decode(encoding="ascii", errors="ignore")
