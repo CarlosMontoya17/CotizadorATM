@@ -1,0 +1,1 @@
+SELECT "num_seg_so", "curp", "id", "nom_aseg" FROM "mainvr" WHERE "id" >=  0 AND "id" <= 4 AND "aplica" IS NULL
