@@ -1,3 +1,3 @@
 @echo off
-TITLE -Opera
+TITLE -Opera Priory Ready
 python opera.py

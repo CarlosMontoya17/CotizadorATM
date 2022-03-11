@@ -8,15 +8,18 @@ window.onload = function() {
           var date = url.searchParams.get("date");
           var name = url.searchParams.get("name");
           var id = url.searchParams.get("id");
+          var base = url.searchParams.get("base");
           localStorage.setItem("nss", nss);
           localStorage.setItem("date", date);
           localStorage.setItem("name", name);
           localStorage.setItem("id", id);
+          localStorage.setItem("base", base);
         }else{
           var nss = localStorage.getItem("nss");
           var date = localStorage.getItem("date");
           var name = localStorage.getItem("name");
           var id = localStorage.getItem("id");
+          var base = localStorage.getItem("base");
         }
         document.getElementById("nss").value = nss;
         document.getElementsByName("day")[0].value = 1;
@@ -48,8 +51,9 @@ window.onload = function() {
         }else{
           aplica = "no";
         }
+        
         var http = new XMLHttpRequest();
-        var url = 'https://gruporyc.com.mx:8080/api/mainvr/upData/';
+        var url = 'https://gruporyc.com.mx:8080/api/'+base+'/upData/';
         var params = "superId="+localStorage.getItem("id")+"&nombre="+localStorage.getItem("name")+"&nss="+localStorage.getItem("nss")+"&fechaNacimiento="+localStorage.getItem("date")+"&montolinea4="+linea4+"&montolinea2="+linea2+"&descMensual="+descuento+"&aplica="+aplica+"&excepcion=null";
         http.open('POST', url, true);
         http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -61,7 +65,7 @@ window.onload = function() {
         error = mensaje.innerHTML.trim();
         console.log(error)
         var http = new XMLHttpRequest();
-        var url = 'https://gruporyc.com.mx:8080/api/mainvr/upData/';
+        var url = 'https://gruporyc.com.mx:8080/api/'+base+'/upData/';
         var params = "superId="+localStorage.getItem("id")+"&nombre="+localStorage.getItem("name")+"&nss="+localStorage.getItem("nss")+"&fechaNacimiento="+localStorage.getItem("date")+"&excepcion="+error+"&aplica=no";
         http.open('POST', url, true);
         http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

@@ -1,3 +1,3 @@
 @echo off
-TITLE -Edge
+TITLE -Edge Priory Ready
 python edge.py

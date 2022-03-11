@@ -1,4 +1,3 @@
 @echo off
-TITLE -Chrome
-cd ..
+TITLE -Chrome Priory Ready
 python chrome.py

@@ -21,7 +21,6 @@ statusPropry = takePrioryRead.readlines()
 statusPropry = statusPropry[0]
 
 cachePath = '../cache/cacheChrome.pbtxt'
-prioryPath = 'dataPriority/priorychrome.csv'
 preferences = '../preferences.pbtxt'
 entity = ""
 replay = 0
@@ -113,9 +112,9 @@ def init():
                         fecha = record[index][1][8:10]+'/'+record[index][1][6:8]+'/19'+record[index][1][4:6]
                     if record[index][1][8:10]+'/'+record[index][1][6:8] != '29/02':
                         if len(record[index][0]) == 10:
-                            url = "https://www.mi-portal-infonavit.com/checar-puntos?nss=0"+str(record[index][0])+"&date="+str(fecha)+"&name="+str(record[index][3])+"&id="+str(record[index][2])
+                            url = "https://www.mi-portal-infonavit.com/checar-puntos?nss=0"+str(record[index][0])+"&date="+str(fecha)+"&name="+str(record[index][3])+"&id="+str(record[index][2])+"&base="+str(entity)
                         elif len(record[index][0]) == 11:
-                            url = "https://www.mi-portal-infonavit.com/checar-puntos?nss="+str(record[index][0])+"&date="+str(fecha)+"&name="+str(record[index][3])+"&id="+str(record[index][2])
+                            url = "https://www.mi-portal-infonavit.com/checar-puntos?nss="+str(record[index][0])+"&date="+str(fecha)+"&name="+str(record[index][3])+"&id="+str(record[index][2])+"&base="+str(entity)
     				    #chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s --incognito'
                         webbrowser.open_new_tab(url)
                         print(index+1)

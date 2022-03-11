@@ -1,4 +1,4 @@
 @echo off
-cd server
+cd servicio
 TITLE -You are server!
 python server.py

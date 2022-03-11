@@ -20,7 +20,7 @@ def openRanges():
 
     filename = fd.askopenfilename(
         title='Open a file',
-        initialdir='/',
+        initialdir='desktop',
         filetypes=filetypes
     )
     try:
@@ -127,7 +127,7 @@ def selectFilePreferences():
     
         filename = fd.askopenfilename(
             title='Open a file',
-            initialdir='/',
+            initialdir='desktop',
             filetypes=filetypes)
         fData = open(filename, 'r')
         list_of_lines = fData.readlines()
@@ -137,12 +137,14 @@ def selectFilePreferences():
         entity = ''.join(str(aEntity[0]))
         replay = ''.join(str(aReplay[0]))
         priority = ''.join(str(aPriority[0]))
-        ip = ''.join(str(aPriority[1]))
+        if len(aPriority) > 1:
+            ip = ''.join(str(aPriority[1]))
+            setIp.set(str(ip))
         # minV = ''.join(str(e[0]))
         currentEntity.set(entity)
         times.insert(END, str(replay))
         currentPrority.set(str(priority))
-        setIp.set(str(ip))
+        
     except:
         messagebox.showerror("ERROR","Verify your preferences data")
     
